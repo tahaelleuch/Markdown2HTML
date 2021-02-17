@@ -30,7 +30,6 @@ if __name__ == "__main__":
         for line in f.readlines():
             if line[0] == '#':
                 count = counter(line)
-                print (count)
                 html_lines.append('<h{0}>{1}</h{0}>\n'.format(str(count), line[count+1:-1]))
 
     with open(sys.argv[2], 'a') as htm:
