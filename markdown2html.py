@@ -47,7 +47,7 @@ if __name__ == "__main__":
                     html_lines.append('<ol>\n')
                     flag = 2
                 html_lines.append('<li>{}</li>\n'.format(line[2:-1]))
-            if flag == 2 and line[0] != '0':
+            if flag == 2 and line[0] != '*':
                 html_lines.append('</ol>\n')
                 flag = 0
 
