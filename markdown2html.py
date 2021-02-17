@@ -27,10 +27,21 @@ if __name__ == "__main__":
 
     with open(sys.argv[1], 'r') as f:
         html_lines = []
+        flag = 0
         for line in f.readlines():
             if line[0] == '#':
                 count = counter(line)
                 html_lines.append('<h{0}>{1}</h{0}>\n'.format(str(count), line[count+1:-1]))
+
+            if line[0] == '-':
+                if flag != 1:
+                    html_lines.append('<ul>\n')
+                    flag = 1
+                html_lines.append('\t<li>{}<li>\n'.format(line[2:-1]))
+            if flag == 1 and line[0] != '-':
+                html_lines.append('</ul>\n')
+                flag = 0
+
 
     with open(sys.argv[2], 'a') as htm:
         for h_line in html_lines:
