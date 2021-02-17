@@ -37,7 +37,7 @@ if __name__ == "__main__":
                 if flag != 1:
                     html_lines.append('<ul>\n')
                     flag = 1
-                html_lines.append('<li>{}<li>\n'.format(line[2:-1]))
+                html_lines.append('<li>{}</li>\n'.format(line[2:-1]))
             if flag == 1 and line[0] != '-':
                 html_lines.append('</ul>\n')
                 flag = 0
