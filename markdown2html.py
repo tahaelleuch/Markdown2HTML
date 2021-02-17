@@ -4,6 +4,16 @@
 import os
 import sys
 
+def counter(str):
+    """count the chars"""
+    count = 0
+    for i in str:
+        if i == "#":
+            count = count + 1
+        if i == ' ':
+            break
+    return str
+
 if __name__ == "__main__":
     """markdown"""
     if len(sys.argv) != 3:
@@ -13,5 +23,17 @@ if __name__ == "__main__":
     if not os.path.exists(sys.argv[1]):
         print('Missing {}'.format(sys.argv[1]), file=sys.stderr)
         exit(1)
+
+    with open(sys.argv[1], 'r') as f:
+        html_lines = []
+        for line in f.readlines():
+            if line[0] == '#':
+                count = counter(line)
+                html_lines.append('<h{0}>{1}</h{0}>\n'.format(count, line[count+1:-1]))
+
+    with open(sys.argv[2], 'a') as htm:
+        for h_line in html_lines:
+            htm.write(h_line)
+
 
     exit(0)
