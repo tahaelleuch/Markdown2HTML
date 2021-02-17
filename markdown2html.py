@@ -4,6 +4,9 @@
 import os
 import sys
 
+from typing import List
+
+
 def counter(str):
     """count the chars"""
     count = 0
@@ -12,7 +15,7 @@ def counter(str):
             count = count + 1
         if i == ' ':
             break
-    return str
+    return count
 
 if __name__ == "__main__":
     """markdown"""
@@ -29,7 +32,8 @@ if __name__ == "__main__":
         for line in f.readlines():
             if line[0] == '#':
                 count = counter(line)
-                html_lines.append('<h{0}>{1}</h{0}>\n'.format(count, line[count+1:-1]))
+                print (count)
+                html_lines.append('<h{0}>{1}</h{0}>\n'.format(str(count), line[count+1:-1]))
 
     with open(sys.argv[2], 'a') as htm:
         for h_line in html_lines:
