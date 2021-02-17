@@ -42,6 +42,9 @@ if __name__ == "__main__":
                 html_lines.append('</ul>\n')
                 flag = 0
 
+        if flag == 1:
+            html_lines.append('</ul>\n')
+
 
     with open(sys.argv[2], 'a') as htm:
         for h_line in html_lines:
