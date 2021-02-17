@@ -4,8 +4,6 @@
 import os
 import sys
 
-from typing import List
-
 
 def counter(str):
     """count the chars"""
